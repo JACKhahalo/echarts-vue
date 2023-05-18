@@ -1,5 +1,5 @@
 <template>
-  <el-container>
+  <!-- <el-container> -->
     <!-- <el-aside width="200px"> -->
     <!-- <el-menu class="el-menu-vertical-demo"> -->
     <!-- <template v-for="(item, index) in tableList"> -->
@@ -9,10 +9,10 @@
     <!-- </template> -->
     <!-- </el-menu> -->
     <!-- </el-aside> -->
-    <el-main>
+    <!-- <el-main> -->
       <router-view />
-    </el-main>
-  </el-container>
+    <!-- </el-main> -->
+  <!-- </el-container> -->
 </template>
 
 <script>
