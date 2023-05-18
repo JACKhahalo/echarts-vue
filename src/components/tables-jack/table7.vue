@@ -15,7 +15,7 @@ export default {
       let option;
       //copy
 
-      let colors = ['#FBB4AE', '#B3CDE3', '#CCEBC5', '#DECBE4', '#5470C6'];
+      //let colors = ['#FBB4AE', '#B3CDE3', '#CCEBC5', '#DECBE4', '#5470C6'];
       let mydata = [
         { name: '范围一', itemStyle: { color: '#e667b1' }, depth: 0 },
         { name: '范围二', itemStyle: { color: '#a193f3' }, depth: 0 },
@@ -60,7 +60,8 @@ export default {
             curveness: 0.7,
           },
           // nodeAlign: 'left',
-          nodeGap: 18,
+          //间隔
+          nodeGap: 5,
           layoutIterations: 1,
           emphasis: {
             focus: 'adjacency',

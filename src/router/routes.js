@@ -57,6 +57,12 @@ const routes = [
   },
 
   {
+    name: 'tables-kevin-table5',
+    path: '/tables-kevin/table5',
+    component: () => import('../components/tables-kevin/table5.vue'),
+  },
+  //
+  {
     name: 'table7',
     path: '/tables-jack/table7',
     component: () => import('../components/tables-jack/table7.vue'),

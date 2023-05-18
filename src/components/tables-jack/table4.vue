@@ -55,11 +55,12 @@ export default {
             radius: [100, 120],
 
             label: {
-              padding: [0, -60],
-              formatter: '{b}:{c},{d}%\n\n',
+              padding: [20, -60],
+              formatter: '{b}:{c}\n{d}%',
             },
             labelLine: {
-              length: 15,
+              //字体位置
+              length: 0,
               length2: 80,
               show: true,
               color: '#00ffff',

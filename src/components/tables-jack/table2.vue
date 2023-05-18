@@ -59,15 +59,62 @@ export default {
           splitLine: {
             show: false,
           },
+          //文字上边距
+          axisLabel: {
+            show: true,
+            margin: 20,
+            rotate: 0,
+            interval: 0,
+          },
           data: [
-            '固定燃烧',
-            '移动燃烧',
-            '电力热力',
-            '能源加工转换',
-            '新能源减排',
-            '土地利用碳汇',
-            '废水污水',
-            '碳排放',
+            {
+              value: '固定燃烧',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '移动燃烧',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '电力热力',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '能源加工转换',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '新能源减排',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '土地利用碳汇',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '废水污水',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
+            {
+              value: '碳排放',
+              textStyle: {
+                fontSize: 10,
+              },
+            },
           ],
         },
         yAxis: {
