@@ -97,6 +97,5 @@ export default {
 }
 .el-aside {
   height: 100%;
-  display: none;
 }
 </style>
