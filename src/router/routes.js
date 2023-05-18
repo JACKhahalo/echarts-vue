@@ -67,6 +67,11 @@ const routes = [
     path: '/tables-jack/table7',
     component: () => import('../components/tables-jack/table7.vue'),
   },
+  {
+    name: 'table8',
+    path: '/tables-jack/table8',
+    component: () => import('../components/tables-jack/table8.vue'),
+  },
 ];
 
 export default routes;

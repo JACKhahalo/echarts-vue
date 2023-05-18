@@ -23,7 +23,7 @@ export default {
         backgroundColor: '#fff',
         legend: {
           left: 'center',
-          bottom: 170,
+          bottom: 80,
           textStyle: {
             fontSize: 14,
             align: 'right',
