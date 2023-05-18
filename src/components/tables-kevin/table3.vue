@@ -103,6 +103,6 @@ export default {
 <style scoped>
 #table2 {
     width: 100%;
-    height: 800px;
+    height: 100%;
 }
 </style>
