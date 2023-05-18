@@ -79,7 +79,7 @@ export default {
     const router = useRouter();
     function go(pathName) {
       router.push({
-        name: pathName,
+        path: pathName,
       });
     }
 
@@ -97,5 +97,6 @@ export default {
 }
 .el-aside {
   height: 100%;
+  display: none;
 }
 </style>
