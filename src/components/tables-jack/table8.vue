@@ -1,39 +1,10 @@
 <template>
-  <el-row :gutter="24">
-    <el-col :span="4" class="text-box">新能源减排</el-col>
-    <el-col :span="20">
-      <div class="data1">
-        <div v-for="(item, index) in data" :key="index" class="box">
-          <div class="textBox">
-            {{ item.value }}
-          </div>
-          <div class="newBox">
-            <div
-              class="buleBox"
-              :style="`height:${item.value * 10}px;width:${item.value * 10}px;`"
-            >
-              <div
-                class="yellowBox"
-                :style="`height:${item.value1 * 10}px;width:${
-                  item.value1 * 10
-                }px;`"
-              ></div>
-            </div>
-          </div>
-
-          <div class="textBox">
-            {{ item.label }}
-          </div>
-        </div>
-      </div>
-    </el-col>
-  </el-row>
-  <el-row :gutter="24" style="margin-top: 50px">
-    <el-col :span="4" class="text-box">碳汇减排</el-col>
-    <el-col :span="20">
+  <div class="template">
+    <el-row :gutter="24">
+      <el-col :span="4" class="text-box">新能源减排</el-col>
       <el-col :span="20">
         <div class="data1">
-          <div v-for="(item, index) in data2" :key="index" class="box">
+          <div v-for="(item, index) in data" :key="index" class="box">
             <div class="textBox">
               {{ item.value }}
             </div>
@@ -58,9 +29,42 @@
             </div>
           </div>
         </div>
-      </el-col></el-col
-    >
-  </el-row>
+      </el-col>
+    </el-row>
+    <el-row :gutter="24" style="margin-top: 50px">
+      <el-col :span="4" class="text-box">碳汇减排</el-col>
+      <el-col :span="20">
+        <el-col :span="20">
+          <div class="data1">
+            <div v-for="(item, index) in data2" :key="index" class="box">
+              <div class="textBox">
+                {{ item.value }}
+              </div>
+              <div class="newBox">
+                <div
+                  class="buleBox"
+                  :style="`height:${item.value * 10}px;width:${
+                    item.value * 10
+                  }px;`"
+                >
+                  <div
+                    class="yellowBox"
+                    :style="`height:${item.value1 * 10}px;width:${
+                      item.value1 * 10
+                    }px;`"
+                  ></div>
+                </div>
+              </div>
+
+              <div class="textBox">
+                {{ item.label }}
+              </div>
+            </div>
+          </div>
+        </el-col></el-col
+      >
+    </el-row>
+  </div>
 </template>
 
 <script>
@@ -160,6 +164,12 @@ export default {
 .data1 {
   display: flex;
 }
+.template {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .newBox,
 .text-box {
   display: flex;
@@ -190,7 +200,5 @@ export default {
   transform: translate(-50%, -50%);
   border-radius: 15px;
   border: 2px solid #fce704;
-}
-.textBox {
 }
 </style>
