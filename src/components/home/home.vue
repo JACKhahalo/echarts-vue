@@ -1,14 +1,14 @@
 <template>
   <el-container>
-    <el-aside width="200px">
-      <el-menu class="el-menu-vertical-demo">
-        <template v-for="(item, index) in tableList">
-          <el-menu-item :index="item.key" @click="go(item.path)">
-            <span>{{ item.name }}</span>
-          </el-menu-item>
-        </template>
-      </el-menu>
-    </el-aside>
+    <!-- <el-aside width="200px"> -->
+    <!-- <el-menu class="el-menu-vertical-demo"> -->
+    <!-- <template v-for="(item, index) in tableList"> -->
+    <!-- <el-menu-item :index="item.key" @click="go(item.path)"> -->
+    <!-- <span>{{ item.name }}</span> -->
+    <!-- </el-menu-item> -->
+    <!-- </template> -->
+    <!-- </el-menu> -->
+    <!-- </el-aside> -->
     <el-main>
       <router-view />
     </el-main>
@@ -92,9 +92,11 @@ export default {
   background-color: rgb(255, 255, 255);
   height: 100%;
 }
+
 .el-container {
   height: 100%;
 }
+
 .el-aside {
   height: 100%;
   display: none;
