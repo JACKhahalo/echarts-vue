@@ -43,37 +43,37 @@ export default {
       {
         name: '1',
         key: '1',
-        path: 'table1',
+        path: '/tables-jack/table1',
       },
       {
         name: '2',
         key: '2',
-        path: 'table2',
+        path: '/tables-jack/table2',
       },
       {
         name: '3',
         key: '3',
-        path: 'table3',
+        path: '/tables-jack/table3',
       },
       {
         name: '4',
         key: '4',
-        path: 'table4',
+        path: '/tables-jack/table4',
       },
       {
         name: '5',
         key: '5',
-        path: 'table5',
+        path: '/tables-jack/table5',
       },
       {
         name: '6',
         key: '6',
-        path: 'table6',
+        path: '/tables-jack/table6',
       },
       {
         name: '7',
         key: '7',
-        path: 'table7',
+        path: '/tables-jack/table7',
       },
     ];
     const router = useRouter();

@@ -6,32 +6,32 @@ const routes = [
   },
   {
     name: 'table1',
-    path: '/table1',
+    path: '/tables-jack/table1',
     component: () => import('../components/tables-jack/table1.vue'),
   },
   {
     name: 'table2',
-    path: '/table2',
+    path: '/tables-jack/table2',
     component: () => import('../components/tables-jack/table2.vue'),
   },
   {
     name: 'table3',
-    path: '/table3',
+    path: '/tables-jack/table3',
     component: () => import('../components/tables-jack/table3.vue'),
   },
   {
     name: 'table4',
-    path: '/table4',
+    path: '/tables-jack/table4',
     component: () => import('../components/tables-jack/table4.vue'),
   },
   {
     name: 'table5',
-    path: '/table5',
+    path: '/tables-jack/table5',
     component: () => import('../components/tables-jack/table5.vue'),
   },
   {
     name: 'table6',
-    path: '/table6',
+    path: '/tables-jack/table6',
     component: () => import('../components/tables-jack/table6.vue'),
   },
 ];
