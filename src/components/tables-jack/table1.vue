@@ -6,7 +6,7 @@
 import { ElContainer } from 'element-plus';
 import { onMounted } from 'vue';
 import * as echarts from 'echarts';
-
+import axios from 'axios';
 export default {
   components: [ElContainer],
   name: 'table1',
