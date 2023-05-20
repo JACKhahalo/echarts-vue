@@ -14,7 +14,5 @@ export function format(data) {
     }
   }
 
-  console.log(obj);
-
   return obj;
 }

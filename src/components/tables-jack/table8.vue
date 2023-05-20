@@ -68,91 +68,91 @@
 </template>
 
 <script>
-import { ElRow, ElCol } from 'element-plus';
-import { onMounted } from 'vue';
-import * as echarts from 'echarts';
+import { ElRow, ElCol } from "element-plus";
+import { onMounted } from "vue";
+import * as echarts from "echarts";
 
 export default {
-  name: 'table7',
+  name: "table7",
   components: [ElRow, ElCol],
   setup() {
     const data = [
       {
-        label: '光伏',
-        value: '10',
-        value1: '8',
+        label: "光伏",
+        value: "10",
+        value1: "8",
       },
       {
-        label: '风电',
-        value: '4',
-        value1: '4',
+        label: "风电",
+        value: "4",
+        value1: "4",
       },
       {
-        label: '潮汐能',
-        value: '8',
-        value1: '6',
+        label: "潮汐能",
+        value: "8",
+        value1: "6",
       },
       {
-        label: '地热能',
-        value: '6',
-        value1: '5',
+        label: "地热能",
+        value: "6",
+        value1: "5",
       },
       {
-        label: '水电',
-        value: '5',
-        value1: '5',
+        label: "水电",
+        value: "5",
+        value1: "5",
       },
       {
-        label: '煤层气',
-        value: '3',
-        value1: '5',
+        label: "煤层气",
+        value: "3",
+        value1: "5",
       },
       {
-        label: '沼气',
-        value: '2',
-        value1: '5',
+        label: "沼气",
+        value: "2",
+        value1: "5",
       },
       {
-        label: '生物质能',
-        value: '7',
-        value1: '6',
+        label: "生物质能",
+        value: "7",
+        value1: "6",
       },
       {
-        label: '氢能',
-        value: '7',
-        value1: '6',
+        label: "氢能",
+        value: "7",
+        value1: "6",
       },
     ];
     let data2 = [
       {
-        label: '森林',
+        label: "森林",
         value: 6,
-        value1: '5',
+        value1: "5",
       },
       {
-        label: '草地',
+        label: "草地",
         value: 5,
-        value1: '4',
+        value1: "4",
       },
       {
-        label: '湿地',
+        label: "湿地",
         value: 4,
-        value1: '4',
+        value1: "4",
       },
       {
-        label: '空地',
+        label: "空地",
         value: 3,
-        value1: '3',
+        value1: "3",
       },
       {
-        label: '耕地',
+        label: "耕地",
         value: 2,
-        value1: '3',
+        value1: "3",
       },
       {
-        label: '碳捕集与封存',
+        label: "碳捕集与封存",
         value: 5,
-        value1: '4',
+        value1: "4",
       },
     ];
 
