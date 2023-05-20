@@ -11,14 +11,14 @@
             <div class="newBox">
               <div
                 class="buleBox"
-                :style="`height:${item.value * 10}px;width:${
-                  item.value * 10
+                :style="`height:${(index + 1) * 10}px;width:${
+                  (index + 1) * 10
                 }px;`"
               >
                 <div
                   class="yellowBox"
-                  :style="`height:${item.value1 * 10}px;width:${
-                    item.value1 * 10
+                  :style="`height:${(index + 1) * 10}px;width:${
+                    (index + 1) * 10
                   }px;`"
                 ></div>
               </div>
@@ -36,21 +36,21 @@
       <el-col :span="20">
         <el-col :span="20">
           <div class="data1">
-            <div v-for="(item, index) in data2" :key="index" class="box">
+            <div v-for="(item, index) in data1" :key="index" class="box">
               <div class="textBox">
                 {{ item.value }}
               </div>
               <div class="newBox">
                 <div
                   class="buleBox"
-                  :style="`height:${item.value * 10}px;width:${
-                    item.value * 10
+                  :style="`height:${(index + 1) * 10}px;width:${
+                    (index + 1) * 10
                   }px;`"
                 >
                   <div
                     class="yellowBox"
-                    :style="`height:${item.value1 * 10}px;width:${
-                      item.value1 * 10
+                    :style="`height:${(index + 1) * 10}px;width:${
+                      (index + 1) * 10
                     }px;`"
                   ></div>
                 </div>
@@ -67,98 +67,112 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import { ElRow, ElCol } from "element-plus";
 import { onMounted } from "vue";
-import * as echarts from "echarts";
+import hyRequest from "../../request";
+import { ref } from "vue";
 
-export default {
-  name: "table7",
-  components: [ElRow, ElCol],
-  setup() {
-    const data = [
-      {
-        label: "光伏",
-        value: "10",
-        value1: "8",
-      },
-      {
-        label: "风电",
-        value: "4",
-        value1: "4",
-      },
-      {
-        label: "潮汐能",
-        value: "8",
-        value1: "6",
-      },
-      {
-        label: "地热能",
-        value: "6",
-        value1: "5",
-      },
-      {
-        label: "水电",
-        value: "5",
-        value1: "5",
-      },
-      {
-        label: "煤层气",
-        value: "3",
-        value1: "5",
-      },
-      {
-        label: "沼气",
-        value: "2",
-        value1: "5",
-      },
-      {
-        label: "生物质能",
-        value: "7",
-        value1: "6",
-      },
-      {
-        label: "氢能",
-        value: "7",
-        value1: "6",
-      },
-    ];
-    let data2 = [
-      {
-        label: "森林",
-        value: 6,
-        value1: "5",
-      },
-      {
-        label: "草地",
-        value: 5,
-        value1: "4",
-      },
-      {
-        label: "湿地",
-        value: 4,
-        value1: "4",
-      },
-      {
-        label: "空地",
-        value: 3,
-        value1: "3",
-      },
-      {
-        label: "耕地",
-        value: 2,
-        value1: "3",
-      },
-      {
-        label: "碳捕集与封存",
-        value: 5,
-        value1: "4",
-      },
-    ];
+// const data = [
+//   {
+//     label: "光伏",
+//     value: "10",
+//     value1: "8",
+//   },
+//   {
+//     label: "风电",
+//     value: "4",
+//     value1: "4",
+//   },
+//   {
+//     label: "潮汐能",
+//     value: "8",
+//     value1: "6",
+//   },
+//   {
+//     label: "地热能",
+//     value: "6",
+//     value1: "5",
+//   },
+//   {
+//     label: "水电",
+//     value: "5",
+//     value1: "5",
+//   },
+//   {
+//     label: "煤层气",
+//     value: "3",
+//     value1: "5",
+//   },
+//   {
+//     label: "沼气",
+//     value: "2",
+//     value1: "5",
+//   },
+//   {
+//     label: "生物质能",
+//     value: "7",
+//     value1: "6",
+//   },
+//   {
+//     label: "氢能",
+//     value: "7",
+//     value1: "6",
+//   },
+// ];
+// let data2 = [
+//   {
+//     label: "森林",
+//     value: 6,
+//     value1: "5",
+//   },
+//   {
+//     label: "草地",
+//     value: 5,
+//     value1: "4",
+//   },
+//   {
+//     label: "湿地",
+//     value: 4,
+//     value1: "4",
+//   },
+//   {
+//     label: "空地",
+//     value: 3,
+//     value1: "3",
+//   },
+//   {
+//     label: "耕地",
+//     value: 2,
+//     value1: "3",
+//   },
+//   {
+//     label: "碳捕集与封存",
+//     value: 5,
+//     value1: "5",
+//   },
+// ];
 
-    return { data, data2 };
-  },
-};
+const data = ref([]);
+const data1 = ref([]);
+
+hyRequest
+  .get({
+    url: "/emission/tanhuijianpai",
+  })
+  .then((res) => {
+    console.log(res);
+    const obj = {};
+    for (const item of res.data) {
+      if (!obj[item.type]) {
+        obj[item.type] = [];
+      }
+      obj[item.type].push(item);
+    }
+
+    data.value = obj["新能源减排"];
+    data1.value = obj["碳汇减排"];
+  });
 </script>
 <style scoped>
 .data1 {

@@ -5,11 +5,12 @@
 <script>
 import { onMounted } from "vue";
 import * as echarts from "echarts";
+import hyRequest from "../../request";
 
 export default {
   name: "k-table5",
   setup() {
-    const echartsInit = () => {
+    const echartsInit = (data) => {
       const chartDom = document.getElementById("k-table5");
       const myChart = echarts.init(chartDom);
       let option;
@@ -36,23 +37,7 @@ export default {
         { name: "煤制品", itemStyle: { color: "#2bb5cc" }, depth: 2 },
       ];
       // mydata.reverse()
-      let mylinks = [
-        { source: "范围二", target: "电力", value: 20 },
-        { source: "范围一", target: "汽油", value: 18 },
-        { source: "范围一", target: "柴油", value: 16 },
-
-        { source: "范围一", target: "天然气", value: 12 },
-        { source: "范围一", target: "原煤", value: 10 },
-        { source: "范围二", target: "热力", value: 8 },
-        { source: "能源出售", target: "电力", value: 5 },
-        { source: "能源出售", target: "热力", value: 4 },
-        { source: "范围三", target: "污水", value: 3 },
-        { source: "范围三", target: "垃圾", value: 3 },
-
-        { source: "范围一", target: "焦炭", value: 2 },
-        { source: "范围一", target: "洗精煤", value: 1 },
-        { source: "能源出售", target: "煤制品", value: 0.5 },
-      ];
+      let mylinks = [...data];
       option = {
         tooltip: {
           trigger: "item",
@@ -84,7 +69,13 @@ export default {
     };
 
     onMounted(() => {
-      echartsInit();
+      hyRequest
+        .get({
+          url: "/emission/lujingfenxi",
+        })
+        .then((res) => {
+          echartsInit(res.data);
+        });
     });
 
     return {};
