@@ -178,12 +178,12 @@ hyRequest
 .data1 {
   display: flex;
 }
-.template {
+/* .template {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
+} */
 .newBox,
 .text-box {
   display: flex;
