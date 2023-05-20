@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { onMounted, nextTick } from "vue";
+import { onMounted } from "vue";
 import * as echarts from "echarts";
 
 export default {
@@ -121,11 +121,6 @@ export default {
 
     onMounted(() => {
       echartsInit();
-      nextTick(() => {
-        window.addEventListener("message", function (e) {
-          console.log(e.data, "9999接收了"); //执行其他操作
-        });
-      });
     });
 
     return {};
