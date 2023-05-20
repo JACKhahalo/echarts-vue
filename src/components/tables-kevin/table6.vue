@@ -1,28 +1,30 @@
 <template>
-  <div class="row">
-    <span v-for="(item, index) in topList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class="grid topgrid" :style="{ background: item.color }">
-    </span>
-    <div class="linetop">
-      <div class="tri" style="border-left: 2px solid #00B0F0;">
-        <div class="trapezoid" style="border-bottom: 2px solid #00B0F0; color: #00B0F0;">范围一：直接排放 2,730tCO2</div>
+  <div class="box">
+    <div class="row">
+      <span v-for="(item, index) in topList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+        class="grid topgrid" :style="{ background: item.color }">
+      </span>
+      <div class="linetop">
+        <div class="tri" style="border-left: 2px solid #00B0F0;">
+          <div class="trapezoid" style="border-bottom: 2px solid #00B0F0; color: #00B0F0;">范围一：直接排放 2,730tCO2</div>
+        </div>
       </div>
-    </div>
-    <span v-for="(item, index) in middleList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class="grid middlegrid" :style="{ background: item.color }" />
-    <div class="linemiddle">
-      <div class="tri" style="border-left: 2px solid #0070C0;">
-        <div class="trapezoid" style="border-bottom: 2px solid #0070C0; color: #0070C0;">范围二：供热/电力间接排放105,068tCO2</div>
+      <span v-for="(item, index) in middleList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+        class="grid middlegrid" :style="{ background: item.color }" />
+      <div class="linemiddle">
+        <div class="tri" style="border-left: 2px solid #0070C0;">
+          <div class="trapezoid" style="border-bottom: 2px solid #0070C0; color: #0070C0;">范围二：供热/电力间接排放105,068tCO2</div>
+        </div>
       </div>
-    </div>
-    <span v-for="(item, index) in bottomList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class=" grid Bottomgrid" :style="{ background: item.color }" />
-    <div class="linebottom">
-      <div class="tri" style="border-left: 2px solid #124E7A;">
-        <div class="trapezoid" style="border-bottom: 2px solid #124E7A; color: #124E7A;"> 范围三：价值链间接排放195.6tCO2 </div>
+      <span v-for="(item, index) in bottomList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+        class=" grid Bottomgrid" :style="{ background: item.color }" />
+      <div class="linebottom">
+        <div class="tri" style="border-left: 2px solid #124E7A;">
+          <div class="trapezoid" style="border-bottom: 2px solid #124E7A; color: #124E7A;"> 范围三：价值链间接排放195.6tCO2 </div>
+        </div>
       </div>
-    </div>
 
+    </div>
   </div>
 </template>
 
@@ -42,6 +44,10 @@ export default {
   mounted() {
     this.initGrid()
     this.renderGrid()
+    window.addEventListener('message', function (e) {
+      console.log(e, 6666)
+      //执行其他操作
+    }, false)
   },
   methods: {
     initGrid() {
