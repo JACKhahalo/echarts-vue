@@ -5,11 +5,12 @@
 <script>
 import { onMounted } from "vue";
 import * as echarts from "echarts";
+import hyRequest from "../../request";
 
 export default {
   name: "table2",
   setup() {
-    const echartsInit = () => {
+    const echartsInit = (labelArr, addArr, reduceArr, dp, data) => {
       const chartDom = document.getElementById("table1");
 
       console.log(chartDom);
@@ -42,16 +43,7 @@ export default {
           splitLine: {
             show: false,
           },
-          data: [
-            "燃料投入",
-            "能源转化及回收",
-            "电力&热力购入",
-            "电力&热力出售",
-            "废弃物处理",
-            "新能源减排",
-            "碳汇减排",
-            "总计",
-          ],
+          data: [...labelArr],
         },
         yAxis: {
           type: "value",
@@ -72,7 +64,7 @@ export default {
                 color: "transparent",
               },
             },
-            data: [0, 3, 3, 8, 8, 9, 8],
+            data: dp,
           },
           {
             name: "增加",
@@ -85,7 +77,7 @@ export default {
               show: true,
               position: "top",
             },
-            data: [5, "-", 8, "-", 2, "-", "-", "-"],
+            data: addArr,
           },
           {
             name: "减少",
@@ -98,7 +90,7 @@ export default {
               show: true,
               position: "bottom",
             },
-            data: ["-", 2, "-", 3, "-", 1, 1, "-"],
+            data: reduceArr,
           },
           {
             name: "汇总",
@@ -111,7 +103,7 @@ export default {
               show: true,
               position: "top",
             },
-            data: ["-", "-", "-", "-", "-", "-", "-", 8],
+            data: data,
           },
         ],
       };
@@ -120,7 +112,50 @@ export default {
     };
 
     onMounted(() => {
-      echartsInit();
+      hyRequest.get({ url: "/emission/tanpaifanghuizong" }).then((res) => {
+        const labelArr = res.data.map((item) => item.label);
+
+        const addArr = res.data.map((item) => {
+          if (item.type === "加") {
+            return item.value;
+          } else {
+            return "-";
+          }
+        });
+
+        const reduceArr = res.data.map((item) => {
+          if (item.type === "减") {
+            return item.value;
+          } else {
+            return "-";
+          }
+        });
+        const dp = [];
+        dp[0] = 0;
+        dp[1] = res.data[0].value - res.data[1].value;
+        dp[2] = dp[1];
+        dp[3] = dp[2] + res.data[2].value - res.data[3].value;
+        dp[4] = dp[3];
+        dp[5] = dp[4] + res.data[5].value - res.data[5].value;
+        dp[6] = dp[5] - res.data[6].value;
+        dp[7] = 0;
+
+        const data = [];
+        for (let i = 0; i < res.data.length; i++) {
+          const item = res.data[i];
+          if (item.type !== "合计") {
+            data.push("-");
+          } else {
+            data.push(item.value);
+          }
+        }
+
+        console.log(addArr);
+        console.log(reduceArr);
+        console.log(res.data);
+
+        echartsInit(labelArr, addArr, reduceArr, dp, data);
+      });
     });
 
     return {};
