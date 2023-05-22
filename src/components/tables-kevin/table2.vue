@@ -12,7 +12,7 @@ export default {
   name: "table2",
 
   setup() {
-    const echartsInit = (obj) => {
+    const echartsInit = (data) => {
       var chartDom = document.getElementById("table2");
       var myChart = echarts.init(chartDom);
       var option;
@@ -44,7 +44,7 @@ export default {
         },
         yAxis: {
           type: "category",
-          data: obj.type,
+          data: data.map((item) => item.type),
         },
         series: [
           {
@@ -61,7 +61,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data: obj.huishou,
+            data: data.map((item) => item.huishou),
           },
           {
             name: "排放",
@@ -76,7 +76,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data: obj.paifang,
+            data: data.map((item) => item.paifang),
           },
           {
             name: "投入",
@@ -88,7 +88,7 @@ export default {
             emphasis: {
               focus: "series",
             },
-            data: obj.touru,
+            data: data.map((item) => item.touru),
           },
         ],
       };
@@ -104,7 +104,23 @@ export default {
         .then((res) => {
           const obj = format(res.data);
 
-          echartsInit(obj);
+          const data = obj.type.map((type, index) => ({
+            type,
+            touru: obj.touru[index],
+            paifang: obj.paifang[index],
+            huishou: obj.huishou[index],
+          }));
+
+          data.sort((b, a) => {
+            return (
+              Number(b.touru) +
+              Number(b.paifang) +
+              Number(b.huishou) -
+              (Number(a.touru) + Number(a.paifang) + Number(a.huishou))
+            );
+          });
+
+          echartsInit(data);
         });
     });
 
