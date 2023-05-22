@@ -1,54 +1,30 @@
 <template>
   <div class="row">
-    <span
-      v-for="(item, index) in topList"
-      :key="index"
-      :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class="grid topgrid"
-      :style="{ background: item.color }"
-    >
+    <span v-for="(item, index) in topList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+      class="grid topgrid" :style="{ background: item.color }">
     </span>
     <div class="linetop">
       <div class="tri" style="border-left: 2px solid #00b0f0">
-        <div
-          class="trapezoid"
-          style="border-bottom: 2px solid #00b0f0; color: #00b0f0"
-        >
-          范围一：直接排放 {{ resData[0].ct }}tCO2
+        <div class="trapezoid" style="border-bottom: 2px solid #00b0f0; color: #00b0f0">
+          范围一：直接排放 {{ resData[0].ct.toFixed(3) }}tCO2
         </div>
       </div>
     </div>
-    <span
-      v-for="(item, index) in middleList"
-      :key="index"
-      :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class="grid middlegrid"
-      :style="{ background: item.color }"
-    />
+    <span v-for="(item, index) in middleList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+      class="grid middlegrid" :style="{ background: item.color }" />
     <div class="linemiddle">
       <div class="tri" style="border-left: 2px solid #0070c0">
-        <div
-          class="trapezoid"
-          style="border-bottom: 2px solid #0070c0; color: #0070c0"
-        >
-          范围二：供热/电力间接排放{{ resData[1].ct }}tCO2
+        <div class="trapezoid" style="border-bottom: 2px solid #0070c0; color: #0070c0">
+          范围二：供热/电力间接排放{{ resData[1].ct.toFixed(3) }}tCO2
         </div>
       </div>
     </div>
-    <span
-      v-for="(item, index) in bottomList"
-      :key="index"
-      :title="`${item.name}:${item.num}，占比 ${item.percent}`"
-      class="grid Bottomgrid"
-      :style="{ background: item.color }"
-    />
+    <span v-for="(item, index) in bottomList" :key="index" :title="`${item.name}:${item.num}，占比 ${item.percent}`"
+      class="grid Bottomgrid" :style="{ background: item.color }" />
     <div class="linebottom">
       <div class="tri" style="border-left: 2px solid #124e7a">
-        <div
-          class="trapezoid"
-          style="border-bottom: 2px solid #124e7a; color: #124e7a"
-        >
-          范围三：价值链间接排放{{ resData[1].ct }}tCO2
+        <div class="trapezoid" style="border-bottom: 2px solid #124e7a; color: #124e7a">
+          范围三：价值链间接排放{{ resData[1].ct.toFixed(3) }}tCO2
         </div>
       </div>
     </div>

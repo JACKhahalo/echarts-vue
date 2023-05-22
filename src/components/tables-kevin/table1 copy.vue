@@ -5,11 +5,12 @@
 <script>
 import { onMounted } from "vue";
 import * as echarts from "echarts";
+import hyRequest from "../../request";
 
 export default {
   name: "table2",
   setup() {
-    const echartsInit = (dp) => {
+    const echartsInit = (labelArr, addArr, reduceArr, dp, data) => {
       const chartDom = document.getElementById("table1");
 
       console.log(chartDom);
@@ -42,16 +43,7 @@ export default {
           splitLine: {
             show: false,
           },
-          data: [
-            "燃料投入",
-            "电力和热力",
-            "废物品处理",
-            "碳汇减排",
-            "1111",
-            "2222",
-            "3333",
-            "333333",
-          ],
+          data: [...labelArr],
         },
         yAxis: {
           type: "value",
@@ -85,7 +77,7 @@ export default {
               show: true,
               position: "top",
             },
-            data: [5, "-", 8, "-", 2, "-", "-"],
+            data: addArr,
           },
           {
             name: "减少",
@@ -98,7 +90,7 @@ export default {
               show: true,
               position: "bottom",
             },
-            data: ["-", 2, "-", 3, "-", 1, 4],
+            data: reduceArr,
           },
           {
             name: "汇总",
@@ -111,7 +103,7 @@ export default {
               show: true,
               position: "top",
             },
-            data: ["-", "-", "-", "-", "-", "-", "-", 8],
+            data: data,
           },
         ],
       };
@@ -120,36 +112,50 @@ export default {
     };
 
     onMounted(() => {
-      const testArr = [
-        { value: 5, type: "加" },
-        { value: 2, type: "减" },
-        { value: 8, type: "加" },
-        { value: 3, type: "减" },
-        { value: 2, type: "加" },
-        { value: 1, type: "减" },
-        { value: 4, type: "减" },
-      ];
-      const dp = [];
-      dp[0] = 0;
+      hyRequest.get({ url: "/emission/tanpaifanghuizong" }).then((res) => {
+        const labelArr = res.data.map((item) => item.label);
 
-      for (let i = 1; i < testArr.length; i++) {
-        const item = testArr[i];
-        if (item.type === "减") {
-          if (testArr[i - 1].type === "减") {
-            dp[i] = dp[i - 1] - item.value;
+        const addArr = res.data.map((item) => {
+          if (item.type === "加") {
+            return item.value;
           } else {
-            dp[i] = testArr[i - 1].value + dp[i - 1] - testArr[i].value;
+            return "-";
           }
-        } else {
-          if (testArr[i - 1].type === "加") {
-            dp[i] = testArr[0].value + dp[i - 1];
+        });
+
+        const reduceArr = res.data.map((item) => {
+          if (item.type === "减") {
+            return item.value;
           } else {
-            dp[i] = dp[i - 1];
+            return "-";
+          }
+        });
+        const dp = [];
+        dp[0] = 0;
+        dp[1] = res.data[0].value - res.data[1].value;
+        dp[2] = dp[1];
+        dp[3] = dp[2] + res.data[2].value - res.data[3].value;
+        dp[4] = dp[3];
+        dp[5] = dp[4] + res.data[5].value - res.data[5].value;
+        dp[6] = dp[5] - res.data[6].value;
+        dp[7] = 0;
+
+        const data = [];
+        for (let i = 0; i < res.data.length; i++) {
+          const item = res.data[i];
+          if (item.type !== "合计") {
+            data.push("-");
+          } else {
+            data.push(item.value);
           }
         }
-      }
 
-      echartsInit(dp);
+        console.log(addArr);
+        console.log(reduceArr);
+        console.log(res.data);
+
+        echartsInit(labelArr, addArr, reduceArr, dp, data);
+      });
     });
 
     return {};
