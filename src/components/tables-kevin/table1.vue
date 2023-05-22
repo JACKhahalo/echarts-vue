@@ -167,7 +167,7 @@ export default {
           if (item.type !== "合计") {
             data.push("-");
           } else {
-            data.push(item.value);
+            data.push(formatNumber(item.value));
           }
         }
 
