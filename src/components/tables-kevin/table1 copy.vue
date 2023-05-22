@@ -44,13 +44,6 @@ export default {
             show: false,
           },
           data: [...labelArr],
-          //文字上边距
-          axisLabel: {
-            show: true,
-            margin: 20,
-            rotate: 0,
-            interval: 0,
-          }
         },
         yAxis: {
           type: "value",
