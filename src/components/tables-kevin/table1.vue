@@ -42,6 +42,13 @@ export default {
           splitLine: {
             show: false,
           },
+          //文字上边距
+          axisLabel: {
+            show: true,
+            margin: 20,
+            rotate: 0,
+            interval: 0,
+          },
           data: [...labelArr],
         },
         yAxis: {
