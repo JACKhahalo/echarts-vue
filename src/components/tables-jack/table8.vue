@@ -11,15 +11,15 @@
             <div class="newBox">
               <div
                 class="buleBox"
-                :style="`height:${(index + 1) * 10}px;width:${
-                  (index + 1) * 10
-                }px;`"
+                :style="`height:${
+                  item.value !== 0 ? (index + 1) * 10 : 0
+                }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
               >
                 <div
                   class="yellowBox"
-                  :style="`height:${(index + 1) * 10}px;width:${
-                    (index + 1) * 10
-                  }px;`"
+                  :style="`height:${
+                    item.value !== 0 ? (index + 1) * 10 : 0
+                  }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
                 ></div>
               </div>
             </div>
@@ -43,15 +43,15 @@
               <div class="newBox">
                 <div
                   class="buleBox"
-                  :style="`height:${(index + 1) * 10}px;width:${
-                    (index + 1) * 10
-                  }px;`"
+                  :style="`height:${
+                    item.value !== 0 ? (index + 1) * 10 : 0
+                  }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
                 >
                   <div
                     class="yellowBox"
-                    :style="`height:${(index + 1) * 10}px;width:${
-                      (index + 1) * 10
-                    }px;`"
+                    :style="`height:${
+                      item.value !== 0 ? (index + 1) * 10 : 0
+                    }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
                   ></div>
                 </div>
               </div>
