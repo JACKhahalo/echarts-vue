@@ -154,13 +154,6 @@ export default {
         });
         const dp = [];
         dp[0] = 0;
-        dp[1] = res.data[0].value - res.data[1].value;
-        dp[2] = dp[1];
-        dp[3] = dp[2] + res.data[2].value - res.data[3].value;
-        dp[4] = dp[3];
-        dp[5] = dp[4] + res.data[4].value - res.data[5].value;
-        dp[6] = dp[5] - res.data[6].value;
-        dp[7] = 0;
 
         const data = [];
         for (let i = 0; i < res.data.length; i++) {
@@ -175,6 +168,25 @@ export default {
         console.log(addArr);
         console.log(reduceArr);
         console.log(res.data);
+
+        for (let i = 1; i < res.data.length; i++) {
+          const item = res.data[i];
+          if (item.type === "减") {
+            if (res.data[i - 1].type === "减") {
+              dp[i] = dp[i - 1] - item.value;
+              console.log(dp[i]);
+            } else {
+              dp[i] = res.data[i - 1].value + dp[i - 1] - res.data[i].value;
+            }
+          } else {
+            if (res.data[i - 1].type === "加") {
+              dp[i] = res.data[0].value + dp[i - 1];
+            } else {
+              dp[i] = dp[i - 1];
+            }
+          }
+        }
+        dp[7] = 0;
 
         echartsInit(labelArr, addArr, reduceArr, dp, data);
       });
