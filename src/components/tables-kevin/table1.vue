@@ -29,7 +29,7 @@ export default {
           },
         },
         legend: {
-          data: ["增加", "减少", "汇总"],
+          data: ["增加", "减少", "汇总   (tCO2)"],
         },
         grid: {
           left: "3%",
@@ -99,7 +99,7 @@ export default {
             data: reduceArr,
           },
           {
-            name: "汇总",
+            name: "汇总   (tCO2)",
             type: "bar",
             stack: "Total",
             itemStyle: {

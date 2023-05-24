@@ -232,7 +232,7 @@ export default {
 /* 直角梯形 */
 .tri {
   margin-top: 10px;
-  height: 50px;
+  /* height: 50px; */
   width: 50px;
   border-left: 2px solid #ccc;
   position: relative;

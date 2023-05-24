@@ -16,7 +16,7 @@ const echartsInit = (indicator, data) => {
 
     option = {
         legend: {
-            data: ['碳排放同行对比', '均值']
+            data: ['估算值(tCO2)', '行业平均值(tCO2)']
         },
         radar: {
             // shape: 'circle',
@@ -55,11 +55,11 @@ const getData = async () => {
     data = [
         {
             value: valueList1,
-            name: '碳排放同行对比'
+            name: '估算值(tCO2)'
         },
         {
             value: valueList2,
-            name: "均值"
+            name: "行业平均值(tCO2)"
         }
     ]
 

@@ -1,7 +1,7 @@
 <template>
   <div class="template">
     <el-row :gutter="24">
-      <el-col :span="4" class="text-box">新能源减排</el-col>
+      <el-col :span="4" class="text-box">新能源减排(tCO2)</el-col>
       <el-col :span="20">
         <div class="data1">
           <div v-for="(item, index) in data" :key="index" class="box">
@@ -24,7 +24,7 @@
       </el-col>
     </el-row>
     <el-row :gutter="24" style="margin-top: 50px">
-      <el-col :span="4" class="text-box">碳汇减排</el-col>
+      <el-col :span="4" class="text-box">碳汇减排(tCO2)</el-col>
       <el-col :span="20">
         <el-col :span="20">
           <div class="data1">

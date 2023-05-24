@@ -46,7 +46,7 @@ export default {
         },
         series: [
           {
-            name: "出售",
+            name: "出售(tCO2)",
             type: "bar",
             stack: "total",
             // itemStyle: {
@@ -77,7 +77,7 @@ export default {
           //   data: paifang,
           // },
           {
-            name: "购入",
+            name: "购入(tCO2)",
             type: "bar",
             stack: "total",
             label: {
@@ -111,23 +111,24 @@ export default {
           // const obj = format(res.data);
           const obj = format(list);
 
-          const data = obj.type.map((type, index) => ({
-            type,
-            chushou: obj.chushou[index],
-            gouru: Number(obj.gouru[index]),
-          }));
+          // const data = obj.type.map((type, index) => ({
+          // type,
+          // chushou: obj.chushou[index],
+          // gouru: Number(obj.gouru[index]),
+          // }));
 
-          data.sort((a, b) => {
-            return (
-              (Number(b.chushou) +
-                Number(b.gouru)) -
-              (Number(a.chushou) + Number(a.gouru))
-            );
-          });
+          // data.sort((a, b) => {
+          //   return (
+          //     (Number(b.chushou) +
+          //       Number(b.gouru)) -
+          //     (Number(a.chushou) + Number(a.gouru))
+          //   );
+          // });
 
-          console.log(data, 'data');
-
-          echartsInit(data);
+          // console.log(data, 'data');
+          // console.log(list);
+          console.log('obj', obj);
+          echartsInit(obj);
         });
     });
 

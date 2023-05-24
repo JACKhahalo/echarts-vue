@@ -46,6 +46,7 @@ export default {
         },
         series: [
           {
+            name: "tCO2",
             data: obj.co_discharge,
             type: "bar",
             itemStyle: {
