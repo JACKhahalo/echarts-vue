@@ -12,6 +12,8 @@ export default {
   name: "table2",
   setup() {
     const echartsInit = ({ type, chushou, gouru, paifang }) => {
+      console.log(type, "type");
+      console.log(chushou, "chushou");
       var chartDom = document.getElementById("table2");
       var myChart = echarts.init(chartDom);
       var option;
@@ -100,34 +102,20 @@ export default {
           url: "/emission/fanwei2/paifang",
         })
         .then((res) => {
-          console.log('res', res);
           let list = res.data.map((item, index) => {
             return {
               type: item.type,
-              chushou: (item.chushou) * (-1),
-              gouru: item.gouru
-            }
-          })
-          // const obj = format(res.data);
+              chushou: item.chushou * -1,
+              gouru: item.gouru,
+            };
+          });
+          list.sort((a, b) => {
+            return b.chushou + b.gouru - (a.chushou + a.gouru);
+          });
+          list.reverse();
           const obj = format(list);
 
-          const data = obj.type.map((type, index) => ({
-            type,
-            chushou: obj.chushou[index],
-            gouru: Number(obj.gouru[index]),
-          }));
-
-          data.sort((a, b) => {
-            return (
-              (Number(b.chushou) +
-                Number(b.gouru)) -
-              (Number(a.chushou) + Number(a.gouru))
-            );
-          });
-
-          console.log(data, 'data');
-
-          echartsInit(data);
+          echartsInit(obj);
         });
     });
 
