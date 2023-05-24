@@ -100,16 +100,34 @@ export default {
           url: "/emission/fanwei2/paifang",
         })
         .then((res) => {
-          let list = res.data.map(item => {
+          console.log('res', res);
+          let list = res.data.map((item, index) => {
             return {
               type: item.type,
               chushou: (item.chushou) * (-1),
               gouru: item.gouru
             }
           })
-          const obj = format(res.data);
-          // const obj = format(list);
-          echartsInit(obj);
+          // const obj = format(res.data);
+          const obj = format(list);
+
+          const data = obj.type.map((type, index) => ({
+            type,
+            chushou: obj.chushou[index],
+            gouru: Number(obj.gouru[index]),
+          }));
+
+          data.sort((a, b) => {
+            return (
+              (Number(b.chushou) +
+                Number(b.gouru)) -
+              (Number(a.chushou) + Number(a.gouru))
+            );
+          });
+
+          console.log(data, 'data');
+
+          echartsInit(data);
         });
     });
 
