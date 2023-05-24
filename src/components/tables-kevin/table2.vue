@@ -6,7 +6,6 @@
 import { onMounted } from "vue";
 import * as echarts from "echarts";
 import hyRequest from "../../request";
-import { format } from "../../utils/format";
 
 export default {
   name: "table2",
@@ -102,6 +101,30 @@ export default {
           url: "emission/fanwei1/paifang",
         })
         .then((res) => {
+          function format(data) {
+            console.log(data);
+            const obj = {};
+            for (let i = 0; i < data.length; i++) {
+              const item = data[i];
+              for (const key in item) {
+                if (!item.touru && !item.huishou && !item.paifang) {
+                  continue;
+                }
+
+                if (!obj[key]) {
+                  obj[key] = [];
+                }
+
+                obj[key].push(
+                  typeof item[key] === "number"
+                    ? parseInt(item[key])
+                    : item[key]
+                );
+              }
+            }
+
+            return obj;
+          }
           const obj = format(res.data);
 
           const data = obj.type.map((type, index) => ({
