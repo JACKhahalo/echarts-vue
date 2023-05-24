@@ -88,7 +88,7 @@ export default {
             ) {
               return item;
             }
-            return {};
+            return { id: "" };
           });
 
           echartsInit(res.data, mydata);

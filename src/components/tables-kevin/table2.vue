@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { onMounted, ref, nextTick } from "vue";
+import { onMounted } from "vue";
 import * as echarts from "echarts";
 import hyRequest from "../../request";
 import { format } from "../../utils/format";
