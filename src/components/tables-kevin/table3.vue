@@ -61,21 +61,21 @@ export default {
             },
             data: chushou,
           },
-          {
-            name: "排放",
-            type: "bar",
-            stack: "total",
-            itemStyle: {
-              color: "#00b0f0",
-            },
-            label: {
-              show: true,
-            },
-            emphasis: {
-              focus: "series",
-            },
-            data: paifang,
-          },
+          // {
+          //   name: "排放",
+          //   type: "bar",
+          //   stack: "total",
+          //   itemStyle: {
+          //     color: "#00b0f0",
+          //   },
+          //   label: {
+          //     show: true,
+          //   },
+          //   emphasis: {
+          //     focus: "series",
+          //   },
+          //   data: paifang,
+          // },
           {
             name: "购入",
             type: "bar",
@@ -100,7 +100,15 @@ export default {
           url: "/emission/fanwei2/paifang",
         })
         .then((res) => {
-          const obj = format(res.data);
+          let list = res.data.map(item => {
+            return {
+              type: item.type,
+              chushou: (item.chushou) * (-1),
+              gouru: item.gouru
+            }
+          })
+          // const obj = format(res.data);
+          const obj = format(list);
           echartsInit(obj);
         });
     });

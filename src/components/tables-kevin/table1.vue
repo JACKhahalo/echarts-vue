@@ -158,7 +158,7 @@ export default {
         dp[2] = dp[1];
         dp[3] = dp[2] + res.data[2].value - res.data[3].value;
         dp[4] = dp[3];
-        dp[5] = dp[4] + res.data[5].value - res.data[5].value;
+        dp[5] = dp[4] + res.data[4].value - res.data[5].value;
         dp[6] = dp[5] - res.data[6].value;
         dp[7] = 0;
 
