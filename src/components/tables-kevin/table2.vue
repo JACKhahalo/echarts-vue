@@ -63,21 +63,21 @@ export default {
             },
             data: data.map((item) => item.huishou),
           },
-          {
-            name: "排放",
-            type: "bar",
-            stack: "total",
-            itemStyle: {
-              color: "#00b0f0",
-            },
-            label: {
-              show: true,
-            },
-            emphasis: {
-              focus: "series",
-            },
-            data: data.map((item) => item.paifang),
-          },
+          // {
+          //   name: "排放",
+          //   type: "bar",
+          //   stack: "total",
+          //   itemStyle: {
+          //     color: "#00b0f0",
+          //   },
+          //   label: {
+          //     show: true,
+          //   },
+          //   emphasis: {
+          //     focus: "series",
+          //   },
+          //   data: data.map((item) => item.paifang),
+          // },
           {
             name: "投入",
             type: "bar",
@@ -107,16 +107,14 @@ export default {
           const data = obj.type.map((type, index) => ({
             type,
             touru: obj.touru[index],
-            paifang: obj.paifang[index],
-            huishou: obj.huishou[index],
+            huishou: Number(-obj.huishou[index]),
           }));
 
           data.sort((b, a) => {
             return (
               Number(b.touru) +
-              Number(b.paifang) +
               Number(b.huishou) -
-              (Number(a.touru) + Number(a.paifang) + Number(a.huishou))
+              (Number(a.touru) + Number(a.huishou))
             );
           });
 
