@@ -14,7 +14,8 @@
           class="trapezoid"
           style="border-bottom: 2px solid #00b0f0; color: #00b0f0"
         >
-          范围一：直接排放 {{ resData[0].ct.toFixed(3) }}tCO2
+          范围一：直接排放
+          {{ resData[2].ct ? resData[2][ct].toFixed(3) : 0 }}tCO2
         </div>
       </div>
     </div>
@@ -31,7 +32,9 @@
           class="trapezoid"
           style="border-bottom: 2px solid #0070c0; color: #0070c0"
         >
-          范围二：供热/电力间接排放{{ resData[1].ct.toFixed(3) }}tCO2
+          范围二：供热/电力间接排放{{
+            resData[2].ct ? resData[2][ct].toFixed(3) : 0
+          }}tCO2
         </div>
       </div>
     </div>
@@ -48,7 +51,9 @@
           class="trapezoid"
           style="border-bottom: 2px solid #124e7a; color: #124e7a"
         >
-          范围三：价值链间接排放{{ resData[2].ct.toFixed(3) }}tCO2
+          范围三：价值链间接排放{{
+            resData[2].ct ? resData[2][ct].toFixed(3) : 0
+          }}tCO2
         </div>
       </div>
     </div>
