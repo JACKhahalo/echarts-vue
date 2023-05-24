@@ -9,18 +9,10 @@
               {{ item.value }}
             </div>
             <div class="newBox">
-              <div
-                class="buleBox"
-                :style="`height:${
-                  item.value !== 0 ? (index + 1) * 10 : 0
-                }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
-              >
-                <div
-                  class="yellowBox"
-                  :style="`height:${
-                    item.value !== 0 ? (index + 1) * 10 : 0
-                  }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
-                ></div>
+              <div class="buleBox" :style="`height:${item.value !== 0 ? (data.length - index) * 10 : 0
+                }px;width:${item.value !== 0 ? (data.length - index) * 10 : 0}px;`">
+                <div class="yellowBox" :style="`height:${item.value !== 0 ? (data.length - index) * 10 : 0
+                  }px;width:${item.value !== 0 ? (data.length - index) * 10 : 0}px;`"></div>
               </div>
             </div>
 
@@ -41,18 +33,10 @@
                 {{ item.value }}
               </div>
               <div class="newBox">
-                <div
-                  class="buleBox"
-                  :style="`height:${
-                    item.value !== 0 ? (index + 1) * 10 : 0
-                  }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
-                >
-                  <div
-                    class="yellowBox"
-                    :style="`height:${
-                      item.value !== 0 ? (index + 1) * 10 : 0
-                    }px;width:${item.value !== 0 ? (index + 1) * 10 : 0}px;`"
-                  ></div>
+                <div class="buleBox" :style="`height:${item.value !== 0 ? (data.length - index) * 10 : 0
+                  }px;width:${item.value !== 0 ? (data.length - index) * 10 : 0}px;`">
+                  <div class="yellowBox" :style="`height:${item.value !== 0 ? (data.length - index) * 10 : 0
+                    }px;width:${item.value !== 0 ? (data.length - index) * 10 : 0}px;`"></div>
                 </div>
               </div>
 
@@ -61,8 +45,7 @@
               </div>
             </div>
           </div>
-        </el-col></el-col
-      >
+        </el-col></el-col>
     </el-row>
   </div>
 </template>
@@ -178,6 +161,7 @@ hyRequest
 .data1 {
   display: flex;
 }
+
 /* .template {
   position: absolute;
   top: 50%;
@@ -192,6 +176,7 @@ hyRequest
   height: 100px;
   width: 100px;
 }
+
 .box {
   display: flex;
   flex-direction: column;
@@ -199,14 +184,17 @@ hyRequest
   align-items: center;
   margin: 0 5px;
 }
+
 #table7 {
   height: 100%;
 }
+
 .buleBox {
   background-color: #0070c0;
   border-radius: 8px;
   position: relative;
 }
+
 .yellowBox {
   position: absolute;
   top: 50%;

@@ -41,7 +41,8 @@ const getData = async () => {
     const indicator = res.data.map(item => {
         return {
             name: item.name,
-            max: (item.score >= item.avgs ? item.score : item.avgs) + ((item.score + item.score) / 2)
+            // max: item.score >= item.avgs ? item.score : item.avgs
+            max: item.score + item.avgs
         }
     })
     let data = [];

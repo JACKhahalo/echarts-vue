@@ -119,6 +119,7 @@ export default {
 
     onMounted(() => {
       hyRequest.get({ url: "/emission/tanpaifanghuizong" }).then((res) => {
+        console.log("res", res);
         function formatNumber(num) {
           if (Number.isInteger(num)) {
             return num; // 整数直接返回
