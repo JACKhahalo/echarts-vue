@@ -18,7 +18,7 @@ export default {
 
       option = {
         title: {
-          text: "范围三：供热与电力间接排放",
+          text: "范围三：价值链间接排放",
           left: "center",
         },
         tooltip: {
@@ -68,6 +68,7 @@ export default {
         })
         .then((res) => {
           const obj = format(res.data);
+
           echartsInit(obj);
         });
     });

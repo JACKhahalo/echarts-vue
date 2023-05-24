@@ -22,7 +22,7 @@ class HYRequest {
         return res;
       },
       (err) => {
-        mainStore.isLoading = false;
+        // mainStore.isLoading = false;
         return err;
       }
     );

@@ -17,4 +17,11 @@ export default defineConfig({
       resolvers: [ElementPlusResolver()],
     }),
   ],
+  proxy:{
+    'prod-api/dbapi/api':{
+      target:'http://192.168.200.203:8083',
+      changeOrigin:true,
+      rewrite: (path) => path.replace(/^\/api/, '')
+    }
+  }
 });
