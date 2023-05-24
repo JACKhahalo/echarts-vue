@@ -107,8 +107,8 @@ export default {
               gouru: item.gouru
             }
           })
-          // const obj = format(res.data);
-          const obj = format(list);
+          const obj = format(res.data);
+          // const obj = format(list);
           echartsInit(obj);
         });
     });
